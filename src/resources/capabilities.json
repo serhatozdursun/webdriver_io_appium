@@ -1,0 +1,25 @@
+{
+  "xiaomi_note_8_pro_android_11": {
+    "appium:deviceName": "ciwg7lfmjzau5xzp",
+    "platformName": "android",
+    "appium:platformVersion": "11.0",
+    "appium:automationName": "UiAutomator2",
+    "appium:disableAndroidWatchers": "true",
+    "appium:appWaitPackage": "co.feeldhiring.qetest",
+    "appium:appWaitActivity": "co.feeldhiring.qetest.MainActivity",
+    "appium:intentCategory": "android.intent.category.LAUNCHER",
+    "appium:intentAction": "android.intent.action.MAIN",
+    "appium:noReset": "false",
+    "appium:fullReset": "false"
+  },
+  "iphone_14_pro_ios_17": {
+    "appium:automationName": "XCUITest",
+    "appium:deviceName": "iPhone 16 Pro",
+    "appium:fullReset": "false",
+    "appium:noReset": "false",
+    "platformName": "iOS",
+    "appium:platformVersion": "17.5.1",
+    "appium:udid": "D5FF7A34-146D-4CDB-A9AE-BAF82B791877",
+    "appium:bundleId": "co.feeldhiring.qetest"
+  }
+}

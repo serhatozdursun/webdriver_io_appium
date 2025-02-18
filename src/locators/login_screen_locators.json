@@ -1,0 +1,26 @@
+{
+  "login_screen": {
+    "ios": "loginScreen",
+    "android": "android=new UiSelector().resourceId(\"loginScreen\")"
+  },
+  "email_input": {
+    "ios": "-ios predicate string:label == \"emailInput\" AND name == \"emailInput\" AND type == \"XCUIElementTypeOther\"",
+    "android": "android=new UiSelector().resourceId(\"emailInput\")"
+  },
+  "email_error": {
+    "ios": "~emailError",
+    "android": "android=new UiSelector().resourceId(\"emailError\")"
+  },
+  "password_input": {
+    "ios": "-ios class chain:**/XCUIElementTypeSecureTextField[`label == \"passwordInput\"`]",
+    "android": "android=new UiSelector().resourceId(\"passwordInput\")"
+  },
+  "submit_button": {
+    "ios": "~submitButton",
+    "android": "android=new UiSelector().resourceId(\"submitButton\")"
+  },
+  "login_failed": {
+    "ios": "-ios predicate string:label == \"Login Failed\" AND name == \"Login Failed\" AND value == \"Login Failed\"",
+    "android": "android=new UiSelector().resourceId(\"android:id/alertTitle\")"
+  }
+}
