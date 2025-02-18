@@ -1,4 +1,4 @@
-# QE Take-Home: Serhat
+# Tutorial Project For WebdriverIO & Appium
 
 This repository demonstrates a test automation project built using **WebDriverIO** for UI testing and **Appium** for mobile device automation. It includes a streamlined test framework with linting, formatting, and reporting capabilities to deliver robust and maintainable automation solutions. The project follows the **Page Object Model (POM)** design pattern for better maintainability and scalability.
 
