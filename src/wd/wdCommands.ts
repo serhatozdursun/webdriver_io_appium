@@ -269,7 +269,6 @@ class WdCommands {
   public async visuallyCheckForText(text: string): Promise<boolean> {
     const screenshotDir = path.resolve(__dirname, '../../screenshot/');
     const screenshotPath = path.join(screenshotDir, 'screenshot.png');
-    const trainedDataPath = path.resolve(__dirname, '../../eng.traineddata');
 
     try {
       // Ensure the screenshot directory exists
@@ -277,47 +276,25 @@ class WdCommands {
         fs.mkdirSync(screenshotDir);
       }
 
-      // Capture a screenshot of the current screen
+      // Capture a screenshot
       await driver.saveScreenshot(screenshotPath);
 
-      // Use Tesseract.js to recognize text from the screenshot
-      const result = await Tesseract.recognize(
-        screenshotPath,
-        'eng', // Language (English in this case)
-        {
-          logger: (m) => console.log(m),
-        },
-      );
+      // Use Tesseract.js for OCR
+      const result = await Tesseract.recognize(screenshotPath, 'eng', {
+        logger: (m) => console.log(m),
+      });
 
-      // Check if the specified text is found in the recognized text
+      // Extract text and verify
       const recognizedText = result.data.text;
       return recognizedText.includes(text);
     } catch (error) {
-      console.error('Error during visual text check:', error);
+      console.error('Error during OCR process:', error);
       throw error;
     } finally {
-      // Cleanup: Delete screenshot and directory
-      try {
-        if (fs.existsSync(screenshotPath)) {
-          fs.unlinkSync(screenshotPath);
-          console.log('Deleted screenshot file.');
-        }
-        if (fs.existsSync(screenshotDir)) {
-          fs.rmdirSync(screenshotDir, { recursive: true });
-          console.log('Deleted screenshot directory.');
-        }
-      } catch (cleanupError) {
-        console.error('Error during cleanup:', cleanupError);
-      }
-
-      // Cleanup: Delete eng.traineddata file if it exists
-      try {
-        if (fs.existsSync(trainedDataPath)) {
-          fs.unlinkSync(trainedDataPath);
-          console.log('Deleted eng.traineddata file.');
-        }
-      } catch (cleanupError) {
-        console.error('Error during cleanup of trained data:', cleanupError);
+      // Cleanup: Delete the screenshot
+      if (fs.existsSync(screenshotPath)) {
+        fs.unlinkSync(screenshotPath);
+        console.log('Deleted screenshot file.');
       }
     }
   }
